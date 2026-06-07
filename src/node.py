@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, jsonify
 from crypto_utils import generate_keys, sign_message
-
 app = Flask(__name__)
 
 NODE_ID = os.getenv("NODE_ID", "1")
