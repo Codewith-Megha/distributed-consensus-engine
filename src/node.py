@@ -1,3 +1,4 @@
+import random
 import os
 from flask import Flask, request, jsonify
 from crypto_utils import generate_keys, sign_message
@@ -10,6 +11,19 @@ private_key, public_key = generate_keys()
 ledger = []
 
 leader_id = 1
+
+@app.route("/elect")
+def elect():
+
+    global leader_id
+
+    leader_id = random.randint(1,5)
+
+    print(f"New Leader Elected: Node {leader_id}")
+
+    return {
+        "leader": leader_id
+    }
 
 @app.route("/")
 def home():
